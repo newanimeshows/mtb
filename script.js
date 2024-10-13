@@ -42,11 +42,11 @@ const joinButton = document.querySelector('.join-btn');
 
 // Add a click event listener to the button with vibration
 joinButton.addEventListener('click', function() {
+    console.log('Button clicked!'); // Check if the event fires
     if (navigator.vibrate) {
-        navigator.vibrate(100); // Vibrates for 100 milliseconds
+        navigator.vibrate(100); // Vibrate for 100 milliseconds
+        console.log("Vibration triggered!");
+    } else {
+        console.log("Vibration API not supported on this device.");
     }
 });
-
-// Set up the countdown interval
-const interval = setInterval(updateCountdown, 1000);
-updateCountdown();
