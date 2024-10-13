@@ -1,52 +1,32 @@
-// Time in seconds (set to 10 seconds for this use case)
-let countdownTime = 25;  // Change this to 10 seconds
-
-// Retrieve stored end time or set it
-let endTime = localStorage.getItem('endTime') || (Date.now() + countdownTime * 1000);
-localStorage.setItem('endTime', endTime);
+// Time in seconds (25 seconds countdown)
+let countdownTime = 25;
 
 function updateCountdown() {
-    const now = Date.now();
-    const timeLeft = Math.floor((endTime - now) / 1000);
+    // Decrease the countdown time by 1 second
+    countdownTime--;
 
-    if (timeLeft <= 0) {
+    // If the countdown reaches 0, stop it and show 00:00:00
+    if (countdownTime <= 0) {
         clearInterval(interval);
-        document.getElementById('timer').innerHTML = "EXPIRED!";
-
-        // Disable the Join Telegram button after expiration
-        disableJoinButton();
+        document.getElementById('hours').textContent = "00";
+        document.getElementById('minutes').textContent = "00";
+        document.getElementById('seconds').textContent = "00";
         return;
     }
 
-    const hours = Math.floor(timeLeft / 3600);
-    const minutes = Math.floor((timeLeft % 3600) / 60);
-    const seconds = timeLeft % 60;
+    // Calculate hours, minutes, and seconds from the countdown time
+    const hours = Math.floor(countdownTime / 3600);
+    const minutes = Math.floor((countdownTime % 3600) / 60);
+    const seconds = countdownTime % 60;
 
-    // Update the countdown display
+    // Display the updated time
     document.getElementById('hours').textContent = String(hours).padStart(2, '0');
     document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
     document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
 }
 
-// Function to disable the "Join Telegram" button after time expiration
-function disableJoinButton() {
-    const joinButton = document.querySelector('.join-btn');
-    joinButton.classList.add('disabled'); // Add a class to change its appearance
-    joinButton.removeAttribute('href');   // Remove the link
-    joinButton.style.cursor = 'not-allowed'; // Change cursor style to indicate it's disabled
-    joinButton.textContent = "Expired";   // Change button text
-}
+// Start the interval to update the countdown every second
+const interval = setInterval(updateCountdown, 1000);
 
-// Select the "Join Telegram" button
-const joinButton = document.querySelector('.join-btn');
-
-// Add a click event listener to the button with vibration
-joinButton.addEventListener('click', function() {
-    console.log('Button clicked!'); // Check if the event fires
-    if (navigator.vibrate) {
-        navigator.vibrate(100); // Vibrate for 100 milliseconds
-        console.log("Vibration triggered!");
-    } else {
-        console.log("Vibration API not supported on this device.");
-    }
-});
+// Initialize the countdown display
+updateCountdown();
