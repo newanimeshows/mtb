@@ -1,5 +1,5 @@
 // Time in seconds (set to 10 seconds for this use case)
-let countdownTime = 10;  // Change this to 10 seconds
+let countdownTime = 25;  // Change this to 10 seconds
 
 // Retrieve stored end time or set it
 let endTime = localStorage.getItem('endTime') || (Date.now() + countdownTime * 1000);
