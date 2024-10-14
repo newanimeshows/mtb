@@ -59,13 +59,23 @@ body {
 
 h1 {
     font-size: 2.5em;
+    margin-top: -10px;
     margin-bottom: 10px;
     color: #ffdd57;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.primage{
+
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+
+}
+
 .intro-text {
     font-size: 1.2em;
+    margin-top: 20px;
     margin-bottom: 20px;
 }
 
@@ -151,8 +161,9 @@ h2 {
     }
 
     h1 {
-        font-size: 2em;
         padding-bottom: 30px;
+        margin-top: -10px;
+        margin-bottom: -10px;
     }
 
     .intro-text {
