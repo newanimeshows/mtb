@@ -161,12 +161,19 @@ h2 {
     h1 {
         padding-bottom: 30px;
         margin-top: -10px;
-        margin-bottom: -10px;
+        margin-bottom: -15px;
     }
 
+    .primage{
+        height: 130px;
+        width: 130px;
+        border-radius: 50%;
+}
+
     .intro-text {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+        font-size: 1.5em;
+        margin-top: 15px;
+        margin-bottom: 20px;
 }
 
 
